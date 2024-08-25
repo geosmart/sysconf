@@ -13,8 +13,13 @@
         groups:
           - docker
           - root
-          - video
         shell: /bin/bash
+
+    - name: create template config
+      template: src={{item}}.tpl dest=/{{item}} mode=0440
+      with_items:
+        - etc/security/limits.d/default.conf
+        - etc/sudoers.d/default
 
     - name: change file mode of this repo
       file:
@@ -34,13 +39,6 @@
 
     - name: hold libc6
       command: apt-mark hold libc6
-
-    - name: create symbolic link to apt sources.list
-      file:
-        src: /home/{{user}}/.sysconf/etc/apt/sources.list.d
-        dest: /etc/apt/sources.list.d
-        state: link
-        force: true
 
     - name: import apt keys
       apt_key:
@@ -130,6 +128,17 @@
         - pmap
         - trap
 
+    - name: create symbolic link to apt sources.list
+      file:
+        src: /home/{{user}}/.sysconf/etc/apt/sources.list.d/{{item}}
+        dest: /etc/apt/sources.list.d/{{item}}
+        state: link
+        force: true
+      with_items:
+        - default.list
+        - google-chrome.list
+        - vscode.list
+
     - include_tasks: tasks/command.yml
     - include_tasks: tasks/desktop.yml
     - include_tasks: tasks/vscode.yml
@@ -140,47 +149,18 @@
     - name: create etc directories
       file: dest=/{{item}} state=directory recurse=yes
       with_items:
-        - etc/X11/xorg.conf.d
         - etc/apt/apt.conf.d
-        - etc/fonts/conf.d
         - etc/opt/chrome/policies/managed
         - etc/security/limits.d
         - etc/supervisor/conf.d
-        - etc/xdg/awesome
-
-    - name: remove old font config
-      shell: rm -f /etc/fonts/conf.d/*
 
     - name: create symbolic link to global config
       file: src=/home/{{user}}/.sysconf/{{item}} dest=/{{item}} state=link force=yes
       with_items:
-        - etc/X11/xorg.conf.d/99-synaptics.conf
         - etc/apt/apt.conf.d/99default
         - etc/docker/daemon.json
-        - etc/fonts/conf.d/99-default.conf
         - etc/opt/chrome/policies/managed/blocklist.json
         - etc/rc.local
-        - etc/xdg/awesome/rc.lua
-
-    - name: create template config
-      template: src={{item}}.tpl dest=/{{item}} mode=0440
-      with_items:
-        - etc/security/limits.d/default.conf
-        - etc/sudoers.d/default
-
-    - name: remove font dir
-      lineinfile:
-        dest: /etc/fonts/fonts.conf
-        regexp: '^\s{0,}<dir'
-        state: absent
-
-    - name: add font dir
-      lineinfile:
-        dest: /etc/fonts/fonts.conf
-        line: "\t{{item}}"
-        insertafter: "<fontconfig"
-      with_items:
-        - "<dir>~/.fonts</dir>"
 
     - name: disable NetworkManager dns
       lineinfile:
@@ -227,17 +207,8 @@
       become: true
       become_user: "{{user}}"
       with_items:
-        - bashrc
+#        - bashrc
         - gitconfig
         - gradle/gradle.properties
-        - sqliterc
         - ssh/config
-        - tmux.conf
-        - vimrc
         - xinitrc
-
-    - name: copy modified background
-      copy:
-        src: dotfiles/config/background.png
-        dest: /usr/share/awesome/themes/default/background.png
-        remote_src: true

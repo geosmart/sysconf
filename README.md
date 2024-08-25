@@ -15,19 +15,9 @@ apt-get update
 apt-get install git make ansible openssh-client openssh-server sudo
 echo > /etc/apt/sources.list
 
-# git clone this repository to /home/wizawu/.sysconf
-cd /home/wizawu/.sysconf
+# clone and install
+git clone git@github.com:geosmart/sysconf.git /home/geosmart/.sysconf
 make install
-```
-
-### Disable GUI
-
-```bash
-# edit /etc/default/grub
-GRUB_CMDLINE_LINUX="text"
-
-update-grub
-systemctl set-default multi-user.target
 ```
 
 ### Enable more cpufreq governors (than powersave and performance)

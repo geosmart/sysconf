@@ -1,5 +1,0 @@
-#!/bin/sh
-
-set -ex
-cd $(dirname $0)/..
-dconf dump /com/gexperts/Tilix/ > dotfiles/tilix.dconf

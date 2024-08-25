@@ -9,8 +9,8 @@
 [push]
     default = upstream
 [user]
-    email = wizawu@gmail.com
-    name = wizawu
+    email = geosmart@foxmail.com
+    name = geosmart
 [alias]
     co = checkout
     dc = diff --cached

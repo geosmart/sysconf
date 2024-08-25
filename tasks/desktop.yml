@@ -1,25 +1,11 @@
 - name: install desktop
   apt:
     name:
-      - awesome
-      - awesome-extra
       - code
-      - cpupower-gui
       - dbus-x11
       - flameshot
-      - geany # text editor
-      - gimp
-      - meld
-      - mirage # image viewer
-      - mupdf
-      - pavucontrol
       - picom # fix chrome menu border
-      - qpdfview
       - qt5ct
-      - redshift
-      - smplayer
-      - sqlitebrowser
-      - tilix
       - vim-gtk3
       - virtualbox
       - virtualbox-qt
@@ -56,11 +42,3 @@
   apt: deb={{item}}
   with_items:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-- name: install cinnamon
-  apt:
-    install_recommends: true
-    name:
-      - cinnamon
-      - cinnamon-session
-      - network-manager-gnome

@@ -12,7 +12,7 @@ RUN apt update -o Acquire::AllowInsecureRepositories=true -y && \
     apt clean
 
 RUN wget --no-check-certificate -q -O /usr/bin/brook \
-    https://github.com/txthinking/brook/releases/download/v20200502/brook_linux_amd64
+    https://github.com/txthinking/brook/releases/download/v20240606/brook_linux_amd64
 
 RUN wget --no-check-certificate -q -O - \
     https://github.com/xtaci/kcptun/releases/download/v20230214/kcptun-linux-amd64-20230214.tar.gz | \

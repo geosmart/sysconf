@@ -1,3 +1,6 @@
+- name: set npm registry to npmmirror
+  shell: " npm config set registry https://registry.npmmirror.com"
+
 - name: install npm packages
   shell: "npm install -g {{item}}"
   with_items:

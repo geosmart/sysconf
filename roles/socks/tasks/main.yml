@@ -13,5 +13,5 @@
     -v {{role_path}}/files:/opt/proxy
     -w /opt/proxy
     --entrypoint /usr/local/bin/npm
-    docker.io/wizawu/proxy:latest
+    docker.io/geosmart/proxy:latest
     run start

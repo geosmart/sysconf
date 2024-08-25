@@ -1,11 +1,11 @@
 install:
-	ansible-playbook -b -e user=wizawu install.yml
+	ansible-playbook -vv -b -e user=geosmart install.yml
 
 cron:
 	ansible-playbook cron.yml
 
 proxy:
-	sudo ansible-playbook proxy.yml
+	sudo ansible-playbook -vv proxy.yml
 
 addon:
 	sudo ansible-playbook addon.yml

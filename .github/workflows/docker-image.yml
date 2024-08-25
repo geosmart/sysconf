@@ -10,16 +10,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: login registry
-        run: echo ${{secrets.DOCKER_HUB_PASSWORD}} | docker login -u wizawu --password-stdin
+        run: echo ${{secrets.DOCKER_HUB_PASSWORD}} | docker login -u geosmart --password-stdin
 
       - name: build proxy image
-        run: cd docker/proxy && docker build . -t wizawu/proxy:latest
+        run: cd docker/proxy && docker build . -t geosmart/proxy:latest
 
       - name: push proxy image
-        run: docker push wizawu/proxy:latest
-
-      - name: build postgres image
-        run: cd docker/postgres && docker build . -t wizawu/postgres:latest
-
-      - name: push postgres image
-        run: docker push wizawu/postgres:latest
+        run: docker push geosmart/proxy:latest

@@ -14,4 +14,4 @@ xdg-user-dirs-update --set SHARE ~
 xdg-user-dirs-update --set TEMPLATES ~
 xdg-user-dirs-update --set VIDEOS ~
 
-awesome
+exec gnome-session
