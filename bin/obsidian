@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /opt/tool/AppImage/obsidian --no-sandbox

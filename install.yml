@@ -116,6 +116,7 @@
           - tlp-rdw
           - util-linux-extra
           - wpasupplicant
+          - libfuse2
 
     - name: check built-in tools
       shell: command -v {{item}}
@@ -207,8 +208,10 @@
       become: true
       become_user: "{{user}}"
       with_items:
-#        - bashrc
+        - bashrc
+        - zshrc
         - gitconfig
         - gradle/gradle.properties
         - ssh/config
-        - xinitrc
+        - pam_environment
+        - gitconfig

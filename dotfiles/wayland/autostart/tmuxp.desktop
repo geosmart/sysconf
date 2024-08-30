@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=tmuxp load -y ~/.sysconf/dotfiles/tmuxp.yml
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=tmuxp
+Name=tmuxp
+Comment[en_US]=
+Comment=

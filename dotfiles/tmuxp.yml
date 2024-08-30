@@ -1,0 +1,44 @@
+session_name: work
+windows:
+- window_name: dev
+  layout: tiled
+  shell_command_before:
+    - cd ~/                    # run as a first command in all panes
+  panes:
+    - shell_command: # ide
+        - sw
+    - shell_command: #
+        - cd /mnt/github/note
+
+- window_name: test
+  layout: tiled
+  shell_command_before:
+    - cd /mnt/d/WorkSpace/github/note/tmux
+  panes:
+    - shell_command:
+        - cd ~/Downloads
+    - shell_command:
+        - cd ~/.ssh/hosts
+    - shell_command:
+        - VBoxManage startvm wxwork SDL
+- window_name: bprod
+  layout: tiled
+  shell_command_before:
+    - cd ~/                    # run as a first command in all panes
+  panes:
+    - shell_command: # jumper
+        - cd ~/.ssh/hosts && ./jumper.sh
+    - shell_command: # switch workspace
+        - sleep 3
+        - wmctrl -r "tmuxp" -t 0
+        - wmctrl -r "Google Chrome" -t 1
+        - wmctrl -r "bot-factory" -t 2
+        - wmctrl -r "pyspark" -t 3
+        - wmctrl -r "Visual Studio Code" -t 5
+        - wmctrl -r "obsidian" -t 6
+        - wmctrl -r "Oracle VM VirtualBox" -t 7
+- window_name: tool
+  layout: tiled
+  panes:
+    - shell_command: # chrome
+        - nohup google-chrome https://github.com/trending >/dev/null 2>&1 &

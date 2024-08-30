@@ -1,12 +1,13 @@
 - name: install desktop
   apt:
     name:
+      - konsole # for dolphin terminal
+      - dolphin
       - code
       - dbus-x11
       - flameshot
       - picom # fix chrome menu border
       - qt5ct
-      - vim-gtk3
       - virtualbox
       - virtualbox-qt
       - x11-xkb-utils
@@ -28,7 +29,6 @@
       - fcitx-frontend-gtk3
       - fcitx-frontend-qt5 # needed by flameshot
       - fcitx-googlepinyin
-      - fcitx-module-x11
 
 - name: install fcitx skin
   shell: >-
@@ -42,3 +42,6 @@
   apt: deb={{item}}
   with_items:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+- name: create symbolic link to wayland autostart
+  shell: ln -s  ~/.sysconf/etc/wayland/autostart  ~/.config/autostart
