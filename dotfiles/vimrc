@@ -16,9 +16,5 @@ filetype indent on
 filetype plugin on
 syntax on
 
-autocmd BufWritePre * %s/\s\+$//e
-autocmd VimEnter * hi MatchParen ctermbg=darkblue
-
-nnoremap <S-Tab> :tabp<CR>
-nnoremap <Tab> :tabn<CR>
-nnoremap te :tabedit
+vnoremap <C-y> "+y
+nnoremap <C-p> "*p

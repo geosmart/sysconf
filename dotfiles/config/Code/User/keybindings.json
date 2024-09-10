@@ -32,10 +32,6 @@
         "command": "workbench.action.files.openFolder"
     },
     {
-        "key": "ctrl+alt+t",
-        "command": "workbench.action.selectTheme"
-    },
-    {
         "key": "ctrl+k ctrl+t",
         "command": "-workbench.action.selectTheme"
     },

@@ -44,4 +44,15 @@
     - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 - name: create symbolic link to wayland autostart
-  shell: ln -s  ~/.sysconf/etc/wayland/autostart  ~/.config/autostart
+  shell:
+    ln -s  ~/.sysconf/etc/wayland/autostart  ~/.config/autostart
+    # disable conflict with left/right
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "[]"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "[]"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "[]"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "[]"
+
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Shift>Page_Up', '<Super><Shift><Alt>Up', '<Control><Shift><Alt>Up']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right"['<Super><Shift>Page_Down', '<Super><Shift><Alt>Down', '<Control><Shift><Alt>Down']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>Page_Up', '<Super><Alt>Up', '<Control><Alt>Up']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>Page_Down', '<Super><Alt>Down', '<Control><Alt>Down']"

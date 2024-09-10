@@ -1,5 +1,3 @@
 Host *
-    User root
-    ServerAliveInterval 60
-    PubkeyAcceptedKeyTypes=+ssh-rsa
-    HostKeyAlgorithms=+ssh-rsa
+        ServerAliveInterval 60
+        ServerAliveCountMax 30

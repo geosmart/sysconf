@@ -13,7 +13,7 @@ windows:
 - window_name: test
   layout: tiled
   shell_command_before:
-    - cd /mnt/d/WorkSpace/github/note/tmux
+    - cd ~/
   panes:
     - shell_command:
         - cd ~/Downloads
